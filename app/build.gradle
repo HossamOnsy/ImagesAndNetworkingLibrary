@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.groove.pinreplicalibrary"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation deps.support.supportCompat
+    implementation deps.support.appCompat
+    implementation deps.support.design
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.supportv4
+    implementation deps.support.constraintLayout
+
+
+    //-----------------------------------------------------------------------
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.converterGson
+
+
+    //-----------------------------------------------------------------------
+
+    implementation deps.okhttp.OkHttplogging
+    implementation deps.okhttp.OkHttp
+
+    //-----------------------------------------------------------------------
+
+
+    implementation deps.dagger.daggerAndroid
+    implementation deps.dagger.daggerAndroidSupport
+    annotationProcessor deps.dagger.daggerAndroidProcessor
+
+    implementation deps.butterknife.Butterknife
+    annotationProcessor deps.butterknife.ButterknifeCompiler
+
+
+
+
+    //-----------------------------------------------------------------------
+
+
+    //-----------------------------------------------------------------------
+
+    implementation deps.others.xRecyclerView
+    testImplementation deps.others.testJUnit
+    implementation deps.others.devrelEasyPermissions
+
+    implementation deps.others.googleCodeGson
+    implementation deps.others.squareUpPicasso
+
+    //-----------------------------------------------------------------------
+
+    // Rx
+    implementation deps.rx.java
+    implementation deps.rx.relay
+    implementation deps.rx.android
+    implementation deps.rx.binding
+    implementation deps.rx.retrofitAdapter
+    implementation deps.rx.rxVolley
+    implementation deps.rx.rxpermissions
+
+
+    // Memory Leak Checkups
+
+    //-----------------------------------------------------------------------------------
+    debugImplementation deps.MemoryLeaks.leakcanaryAndroid
+    releaseImplementation deps.MemoryLeaks.leakcanaryAndroidNoOp
+
+    // Optional, if you use support library fragments:
+    debugImplementation deps.MemoryLeaks.leakcanarySupportFragment
+}
